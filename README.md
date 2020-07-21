@@ -6,7 +6,7 @@ Two files for building a docker and running the PlasSuite workflow and a sample 
 
 Built your docker from this docker file:
 ```
-docker build -t plassuite -f PlasSuite 
+docker build -t plassuite -f PlasSuite .
 ```
 Launch this docker as follow:
 ```
@@ -26,7 +26,7 @@ docker run -v /<your home>:/mnt -it plassuite /bin/bash PlasSuite/PlasTaxo/PlasT
 
 Built your docker from this docker file
 ```
-docker build -t plassuite -f PlasSuiteWithDatabase 
+docker build -t plassuite -f PlasSuiteWithDatabase .
 ```
 
 With this configuration, the path of the database is not mandatory (the default home is then the root home included in the docker image):
