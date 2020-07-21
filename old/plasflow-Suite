@@ -1,0 +1,28 @@
+FROM ubuntu:16.04
+ENV DEBIAN_FRONTEND=noninteractive
+MAINTAINER Christian Brandt <christian.jena@gmail.com
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+					 wget
+RUN apt-get clean
+
+# install correct conda version for plasflow
+RUN wget --no-check-certificate https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+RUN bash Miniconda3-latest-Linux-x86_64.sh -b -p /conda
+RUN rm -f Miniconda3-latest-Linux-x86_64.sh
+
+ENV PATH /conda/bin:$PATH
+# install plasflow
+RUN conda config --add channels bioconda
+RUN conda config --add channels conda-forge
+RUN conda create --name plasflow python=3.5
+ENV PATH /conda/envs/plasflow/bin:$PATH
+#~ RUN activate plasflow
+#~ RUN conda install -c jjhelmus tensorflow=0.10.0rc0
+RUN conda install plasflow -c smaegol
+#~ RUN conda install -c bioconda perl-bioperl perl-getopt-long
+# modify shebangs for bioperl
+RUN sed -i '1i#!/conda/bin/perl' /conda/bin/filter_sequences_by_length.pl
+
+#~ On part du docker construit et on continue l'installation
+#~ conda update conda

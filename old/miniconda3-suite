@@ -1,0 +1,45 @@
+FROM debian:buster-slim
+
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+ENV PATH /opt/conda/bin:$PATH
+
+RUN apt-get update --fix-missing && \
+    apt-get install -y wget bzip2 ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 git mercurial subversion && \
+    apt-get clean
+
+RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
+    /bin/bash ~/miniconda.sh -b -p /opt/conda && \
+    rm ~/miniconda.sh && \
+    /opt/conda/bin/conda clean -tipsy && \
+    ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
+    echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+    echo "conda activate base" >> ~/.bashrc && \
+    find /opt/conda/ -follow -type f -name '*.a' -delete && \
+    find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
+    /opt/conda/bin/conda clean -afy
+
+CMD [ "/bin/bash" ]
+
+
+RUN conda config --add channels bioconda
+RUN conda config --add channels conda-forge
+RUN conda create --name plasflow python=3.5
+
+RUN conda install -n plasflow plasflow -c smaegol
+RUN conda install -n plasflow -c biobuilds perl=5.22
+RUN conda install -n plasflow -c bioconda perl-bioperl perl-getopt-long
+RUN conda install -n plasflow -c bioconda cd-hit
+RUN conda install -n plasflow -c bioconda samtools
+RUN conda install -n plasflow -c bioconda bwa
+RUN conda install -n plasflow -c etetoolkit ete3 ete_toolchain
+RUN conda install -n plasflow  -c conda-forge -c bioconda -c defaults prokka
+RUN conda install -n plasflow minimap2=2.14
+RUN conda install -n plasflow blast=2.7
+#~ RUN conda install -n plasflow -c bioconda hmmer=3.2 # présent en 3.3
+RUN conda config --add channels r # difficulté à installer les packages (env plasflow sinon intallation sans pb sans env)
+#~ RUN conda install -n plasflow r=3.6
+#~ RUN conda install -n plasflow -c r r-ade4 r-genoplotr r-circlize
+RUN conda install -n plasflow r-genoplotr 
+RUN conda install -n plasflow r-circlize  
+#~ CMD [ "conda activate plasflow" ]
+
