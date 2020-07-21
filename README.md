@@ -1,6 +1,6 @@
 # PlasSuite-Docker
 
-Two files for building a docker and running the PlasSuite workflow and a sample data described in this [web site] (https://github.com/pegi3s/dockerfiles/tree/master/plasflow/1.1.0)   
+Two files for building a docker and running the PlasSuite workflow and a sample data described in this [web site](https://github.com/pegi3s/dockerfiles/tree/master/plasflow/1.1.0)   
 
 ### PlasSuite dockfile: all programs for running PlasSuite (the size of the docker is then around 8 Gb)
 
