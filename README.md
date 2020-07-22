@@ -2,6 +2,12 @@
 
 Two files for building a docker and running the PlasSuite workflow and a sample data described in this [web site](https://github.com/pegi3s/dockerfiles/tree/master/plasflow/1.1.0)   
 
+A description of this workflow can be found [here](https://github.com/meb-team/PlasSuite)
+
+and in this paper: Hilpert C, Bricheux G, Debroas D. Reconstruction of plasmids by shotgun sequencing from environmental DNA: which bioinformatic workflow?
+
+Brief Bioinform, DOI: 10.1093/bib/bbaa059.
+
 ### PlasSuite dockfile: all programs for running PlasSuite (the size of the docker is then around 8 Gb)
 
 Built your docker from this docker file:
