@@ -58,6 +58,7 @@ RUN echo "conda activate plassuite" >> root/.bashrc
 RUN git clone https://github.com/meb-team/PlasSuite.git
 RUN wget https://s3.mesocentre.uca.fr/swift/v1/AUTH_f70cfb776e144d419461999459de06fb/PlasSuite/plasmidome_databases.tar.gz && \
 	tar xf plasmidome_databases.tar.gz && \
-	mv plasmidome_databases /root
+	mv plasmidome_databases /root && \
+	rm plasmidome_databases.tar.gz
 
 ENV PATH="/opt/conda/envs/plassuite/bin/:${PATH}"
