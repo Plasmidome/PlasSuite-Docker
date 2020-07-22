@@ -29,6 +29,7 @@ Built your docker from this docker file
 docker build -t plassuite -f PlasSuiteWithDataBase .
 ```
 
+
 With this configuration, the path of the database is not mandatory (the default home is then the root home included in the docker image):
 ```
 docker run -v /<path in your home>:/mnt -it plassuite /bin/bash PlasSuite/PlasPredict/PlasPredict.sh -a /mnt/<path in your home>/test_data/Citrobacter_freundii_strain_CAV1321_scaffolds.fasta -o /mnt/<path in your home>/test_results/PlasPredict --prefix citrobacter
