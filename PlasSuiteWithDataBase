@@ -32,6 +32,12 @@ RUN conda install  -n plassuite -c jjhelmus tensorflow=0.10.0rc0
 RUN conda install -n plassuite plasflow -c smaegol
 RUN conda install -n plassuite -c biobuilds perl=5.22
 RUN conda install -n plassuite -c bioconda perl-bioperl perl-getopt-long
+
+	# update Plasflow
+RUN wget  https://github.com/smaegol/PlasFlow/archive/v1.1.tar.gz && \
+	tar xf v1.1.tar.gz && \
+	cp PlasFlow-1.1/* /opt/conda/envs/plassuite/bin/ -r
+
 # PlasFlow end
 RUN conda install -n plassuite -c bioconda cd-hit
 RUN conda install -n plassuite -c bioconda samtools

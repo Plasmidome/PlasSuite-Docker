@@ -1,6 +1,6 @@
 # PlasSuite-Docker
 
-Two files for building a docker and running the PlasSuite workflow and a sample data described in this [web site](https://github.com/pegi3s/dockerfiles/tree/master/plasflow/1.1.0)   
+Two files for building a docker and running the PlasSuite workflow and a sample data described in this [web site](https://github.com/smaegol/PlasFlow)   
 
 A description of this workflow can be found [here](https://github.com/meb-team/PlasSuite)
 
