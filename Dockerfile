@@ -48,9 +48,9 @@ RUN conda install -n plassuite minimap2=2.14
 RUN conda install -n plassuite blast=2.7
 
 
-RUN wget ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/by_program/tbl2asn/linux.tbl2asn.gz && \
-    gunzip linux.tbl2asn.gz && \
-    mv linux.tbl2asn tbl2asn && \
+RUN wget ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/by_program/tbl2asn/linux64.tbl2asn.gz && \
+    gunzip linux64.tbl2asn.gz && \
+    mv linux64.tbl2asn tbl2asn && \
     chmod +x tbl2asn && \
     mv tbl2asn /opt/conda/envs/plassuite/bin/tbl2asn
     
